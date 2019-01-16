@@ -40,10 +40,23 @@ public class UserController {
 
 		return new RestResponse(HttpStatus.OK.value(), "Operación exitosa");
 	}
-	
+
 	@RequestMapping(value = "/getUsers", method = RequestMethod.POST)
 	public List<User> getUsers() {
 		return this.userService.findAll();
+	}
+
+	@RequestMapping(value="/eliminarUsuario", method = RequestMethod.POST)
+	public RestResponse eliminarUsuario(@RequestBody String userJson)
+			throws JsonParseException, JsonMappingException, IOException {
+		User user = this.objectMapper.readValue(userJson, User.class);
+
+		if (user.getId() == null) {
+			return new RestResponse(HttpStatus.NOT_ACCEPTABLE.value(), "El id está nulo");
+		}
+
+		this.userService.deleteUser(user.getId());
+		return new RestResponse(HttpStatus.OK.value(), "Operación exitosa");
 	}
 
 	private boolean validate(User user) {
@@ -51,7 +64,7 @@ public class UserController {
 		if (user.getPrimerNombre() == null || user.getPrimerNombre().trim().equals("")) {
 			isValid = false;
 		}
-		//dependecia de StringUtil que convierte vacios a nulls
+		// dependecia de StringUtil que convierte vacios a nulls
 		if (StringUtils.trimToNull(user.getApellidoPaterno()) == null) {
 			isValid = false;
 		}

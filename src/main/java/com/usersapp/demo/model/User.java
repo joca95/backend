@@ -21,7 +21,7 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, unique = true)
-	private int id;
+	private Long id;
 
 	@Column(name = "primer_nombre", nullable = false, length = 100)
 	private String primerNombre;
@@ -45,11 +45,11 @@ public class User implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

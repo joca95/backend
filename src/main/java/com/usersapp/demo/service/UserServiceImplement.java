@@ -24,6 +24,12 @@ public class UserServiceImplement implements UserService {
 		// TODO Auto-generated method stub
 		return this.userRrepository.findAll();
 	}
+
+	@Override
+	public void deleteUser(Long id) {
+		// TODO Auto-generated method stub
+		this.userRrepository.deleteById(id);
+	}
 	
 	
 	
