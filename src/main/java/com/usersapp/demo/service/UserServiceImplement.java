@@ -1,5 +1,7 @@
 package com.usersapp.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,12 @@ public class UserServiceImplement implements UserService {
 	@Override
 	public User save(User user) {
 		return this.userRrepository.save(user);
+	}
+
+	@Override
+	public List<User> findAll() {
+		// TODO Auto-generated method stub
+		return this.userRrepository.findAll();
 	}
 	
 	

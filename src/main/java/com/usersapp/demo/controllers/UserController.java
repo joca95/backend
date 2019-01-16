@@ -1,6 +1,7 @@
 package com.usersapp.demo.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.usersapp.demo.model.User;
 import com.usersapp.demo.service.UserService;
+import com.usersapp.demo.util.QueryResult;
 import com.usersapp.demo.util.RestResponse;
 
 @RestController
@@ -37,6 +39,11 @@ public class UserController {
 		this.userService.save(user);
 
 		return new RestResponse(HttpStatus.OK.value(), "Operación exitosa");
+	}
+	
+	@RequestMapping(value = "/getUsers", method = RequestMethod.POST)
+	public List<User> getUsers() {
+		return this.userService.findAll();
 	}
 
 	private boolean validate(User user) {
