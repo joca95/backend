@@ -1,4 +1,4 @@
-package com.usersapp.model;
+package com.usersapp.demo.model;
 
 import java.io.Serializable;
 
@@ -26,7 +26,7 @@ public class User implements Serializable {
 	@Column(name = "primer_nombre", nullable = false, length = 100)
 	private String primerNombre;
 
-	@Column(name = "segundo_nombre", nullable = false, length = 100)
+	@Column(name = "segundo_nombre", nullable = true, length = 100)
 	private String segundoNombre;
 
 	@Column(name = "apellido_paterno", nullable = false, length = 100)
@@ -35,10 +35,10 @@ public class User implements Serializable {
 	@Column(name = "apellido_materno", nullable = false, length = 100)
 	private String apellidoMaterno;
 
-	@Column(name = "telefono", nullable = false, length = 20)
+	@Column(name = "telefono", nullable = true, length = 20)
 	private String telefono;
 
-	@Column(name = "direccion", nullable = false, length = 100)
+	@Column(name = "direccion", nullable = true, length = 100)
 	private String direccion;
 	
 	public User() {
