@@ -41,7 +41,7 @@ public class UserController {
 		return new RestResponse(HttpStatus.OK.value(), "Operación exitosa");
 	}
 
-	@RequestMapping(value = "/getUsers", method = RequestMethod.POST)
+	@RequestMapping(value = "/getUsers", method = RequestMethod.GET)
 	public List<User> getUsers() {
 		return this.userService.findAll();
 	}
